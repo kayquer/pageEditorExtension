@@ -1,0 +1,33 @@
+{
+"manifest_version": 2,
+//current manifest version by chrome
+
+"name": "Editor",
+"description": "This extension will append an icon in the gmail homepage and a pop-up will appear on click over that icon.",
+"version": "1.0",
+
+
+"content_scripts": [   
+{ "run_at" :"document_end",
+"matches": ["<all_urls>"],
+"js": ["jquery-3.4.1.min.js","background.js","pickr.min.js"],
+"css":["css/css.css","css/classic.min.css"]
+} ],
+  "background": {
+    "scripts": [
+      "jquery-3.4.1.min.js","background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Editar!"
+  },
+"permissions": [
+    "https://*/*",
+    "http://*/*",
+    "tabs"
+  ]
+}
+//web_accessible_resources specify the path and format of files which the web page require to load from extension.
+//But why? because webpage and extension executes in isolated environments.They can't access one another's resources directly.
+//and in the following way we allow web page to access the required files from extension.
